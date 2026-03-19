@@ -13,31 +13,20 @@ public class CategoryHandler(AppDbContext context) : ICategoryHandler
     {
         try
         {
-            for (int i = 1; i <= 200; i++ )
-            {
+            //for (int i = 1; i <= 200; i++ )
+            //{
                 var category = new Category
                 {
                     UserId = request.UserId,
-                    Title = request.Title + $"{i}",
-                    Description = request.Description + $"{i}"
+                    Title = request.Title,// + $"{i}",
+                    Description = request.Description// + $"{i}"
                 };
 
                 await context.Categories.AddAsync(category);
                 await context.SaveChangesAsync();
-            }
+            //}
             
-
-            //var category = new Category
-            //{
-            //    UserId = request.UserId,
-            //    Title = request.Title,
-            //    Description = request.Description
-            //};
-
-            //await context.Categories.AddAsync(category);
-            //await context.SaveChangesAsync();
-
-            return new Response<Category?>(null, 201, "Categoria criada com sucesso.");
+            return new Response<Category?>(category, 201, "Categoria criada com sucesso.");
         }
         catch (Exception ex)
         {

@@ -10,12 +10,17 @@ public class CreateCategoryEndpoint : IEndpoint
 {
     public static void Map(IEndpointRouteBuilder app)
         => app.MapPost("/", HandleAsync)
+            .WithName("Categories: Create")
+            .WithSummary("Cria uma categoria")
+            .WithDescription("Cria uma categoria")
+            .WithOrder(1)
             .Produces<Response<Category?>>();
 
     private static async Task<IResult> HandleAsync(
         ICategoryHandler handler,
         CreateCategoryRequest request) 
     {
+        request.UserId = "teste@test.com";
         var result = await handler.CreateAsync(request);
 
         return result.IsSuccess
