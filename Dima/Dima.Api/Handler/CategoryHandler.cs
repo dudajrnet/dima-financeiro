@@ -13,18 +13,17 @@ public class CategoryHandler(AppDbContext context) : ICategoryHandler
     {
         try
         {
-            //for (int i = 1; i <= 200; i++ )
-            //{
-                var category = new Category
-                {
-                    UserId = request.UserId,
-                    Title = request.Title,// + $"{i}",
-                    Description = request.Description// + $"{i}"
-                };
+           
+            var category = new Category
+            {
+                UserId = request.UserId,
+                Title = request.Title,
+                Description = request.Description
+            };
 
-                await context.Categories.AddAsync(category);
-                await context.SaveChangesAsync();
-            //}
+            await context.Categories.AddAsync(category);
+            await context.SaveChangesAsync();
+            
             
             return new Response<Category?>(category, 201, "Categoria criada com sucesso.");
         }
@@ -46,7 +45,7 @@ public class CategoryHandler(AppDbContext context) : ICategoryHandler
                 .Where(category => category.UserId == request.UserId);                
 
             var categories = await query
-                .Skip((request.PageNumber - 1) * request.PageSize)
+                .Skip((request.PageNumber) * request.PageSize)
                 .Take(request.PageSize)                
                 .ToListAsync();
             
