@@ -1,4 +1,4 @@
-﻿using Dima.Api.Common.Api;
+using Dima.Api.Common.Api;
 using Dima.Core;
 using Dima.Core.Handlers;
 using Dima.Core.Models;
@@ -25,7 +25,7 @@ public class GetAllCategoryEndpoint : IEndpoint
     {
         var request = new GetAllCategoryRequest
         {
-            UserId = "teste@test.com",
+            UserId = Configuration.DefaultUserId,
             PageNumber = pageNumber,
             PageSize = pageSize
         };

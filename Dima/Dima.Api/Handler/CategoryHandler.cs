@@ -1,4 +1,4 @@
-﻿using Dima.Api.Data;
+using Dima.Api.Data;
 using Dima.Core.Handlers;
 using Dima.Core.Models;
 using Dima.Core.Requests.Categories;
@@ -45,7 +45,7 @@ public class CategoryHandler(AppDbContext context) : ICategoryHandler
                 .Where(category => category.UserId == request.UserId);                
 
             var categories = await query
-                .Skip((request.PageNumber) * request.PageSize)
+                .Skip((request.PageNumber - 1) * request.PageSize)
                 .Take(request.PageSize)                
                 .ToListAsync();
             
@@ -83,7 +83,7 @@ public class CategoryHandler(AppDbContext context) : ICategoryHandler
         {
             Console.Write(ex.ToString());
 
-            return new Response<Category?>(null, 500, "A004 - Falha ao excluir a categoria.");
+            return new Response<Category?>(null, 500, "A004 - Falha ao obter a categoria.");
         }
     }
 

@@ -1,4 +1,5 @@
-﻿using Dima.Api.Common.Api;
+using Dima.Api.Common.Api;
+using Dima.Core;
 using Dima.Core.Handlers;
 using Dima.Core.Models;
 using Dima.Core.Requests.Categories;
@@ -21,7 +22,7 @@ public class UpdateCategoryEndpoint : IEndpoint
         UpdateCategoryRequest request,
         long id)
     {
-        request.UserId = "teste@test.com";
+        request.UserId = Configuration.DefaultUserId;
         request.Id = id;
 
         var result = await handler.UpdateAsync(request);

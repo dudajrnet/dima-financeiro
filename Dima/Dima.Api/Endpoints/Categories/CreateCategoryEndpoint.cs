@@ -1,4 +1,5 @@
-﻿using Dima.Api.Common.Api;
+using Dima.Api.Common.Api;
+using Dima.Core;
 using Dima.Core.Handlers;
 using Dima.Core.Models;
 using Dima.Core.Requests.Categories;
@@ -20,7 +21,7 @@ public class CreateCategoryEndpoint : IEndpoint
         ICategoryHandler handler,
         CreateCategoryRequest request) 
     {
-        request.UserId = "teste@test.com";
+        request.UserId = Configuration.DefaultUserId;
         var result = await handler.CreateAsync(request);
 
         return result.IsSuccess

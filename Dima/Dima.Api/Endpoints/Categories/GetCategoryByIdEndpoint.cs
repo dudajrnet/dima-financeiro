@@ -1,4 +1,5 @@
-﻿using Dima.Api.Common.Api;
+using Dima.Api.Common.Api;
+using Dima.Core;
 using Dima.Core.Handlers;
 using Dima.Core.Models;
 using Dima.Core.Requests.Categories;
@@ -22,7 +23,7 @@ public class GetByIdCategoryEndpoint : IEndpoint
     {
         var request = new GetCategoryByIdRequest
         {
-            UserId = "teste@test.com",
+            UserId = Configuration.DefaultUserId,
             Id = id
         };
 
