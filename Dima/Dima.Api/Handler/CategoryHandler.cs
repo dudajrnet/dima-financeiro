@@ -60,7 +60,7 @@ public class CategoryHandler(AppDbContext context) : ICategoryHandler
         }
         catch (Exception)
         {
-            return new PagedResponse<List<Category>>(null, 500, "Falha ao obter as categorias.");
+            return new PagedResponse<List<Category>>(null, 500, "A006 - Falha ao obter as categorias.");
         }
     }
 
@@ -76,7 +76,7 @@ public class CategoryHandler(AppDbContext context) : ICategoryHandler
                     category.UserId == request.UserId);
 
                 return category is null
-                    ? new Response<Category?>(null, 404, "Categoria não encontrada")
+                    ? new Response<Category?>(null, 404, "A005 - Categoria não encontrada")
                     : new Response<Category?>(category, 200, "Categoria encontrada com sucesso.");
         }
         catch (Exception ex)

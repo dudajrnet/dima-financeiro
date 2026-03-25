@@ -2,9 +2,6 @@ using Dima.Api.Data;
 using Dima.Api.Endpoints;
 using Dima.Api.Handler;
 using Dima.Core.Handlers;
-using Dima.Core.Models;
-using Dima.Core.Requests.Categories;
-using Dima.Core.Responses;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,6 +21,8 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddTransient<ICategoryHandler, CategoryHandler>();
+
+builder.Services.AddTransient<ITransactionHandler, TransactionHandler>();
 
 var app = builder.Build();
 
