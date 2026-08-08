@@ -6,8 +6,11 @@ public static class Configuration
 
     public const int DefaultPageNumber = 1;
 
-    public const int DefaultStatusCode = 200;
+    public const int DefaultStatusCode = 200;  
+    
+    public static string ConnectionString { get; set; } = string.Empty;
 
-    public const string DefaultUserId = "teste@test.com";
+    public static string FrontEndUrl { get; set; } = string.Empty;
+    public static string BackEndUrl { get; set; } = string.Empty;
 }
 
