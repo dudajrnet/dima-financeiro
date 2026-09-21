@@ -16,7 +16,7 @@ public class UpdateCategoryRequest : BaseRequest
     public string Title { get; set; } = string.Empty;
     
     [Required(ErrorMessage = "A descrição não pode ser vazia.")]
-    public string Description { get; set; } = string.Empty;
+    public string? Description { get; set; }
 }
 
 

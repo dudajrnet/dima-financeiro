@@ -25,10 +25,9 @@ public class TransactionHandler(IHttpClientFactory httpClientFactory) : ITransac
             ?? new Response<Transaction?>(null, 400, "Não foi possível excluir a transação.");    }
 
     public async Task<Response<Transaction?>> GetByIdAsync(GetTransactionByIdRequest request)
-    {
-        return await _client.GetFromJsonAsync<Response<Transaction?>>($"v1/transactions/{request.Id}")
+    => await _client.GetFromJsonAsync<Response<Transaction?>>($"v1/transactions/{request.Id}")
             ?? new Response<Transaction?>(null, 400, "Não foi possível obter a transação.");
-    }
+    
 
     public async Task<PagedResponse<List<Transaction>?>> GetByPeriodAsync(GetTransactionByPeriodRequest request)
     {
